@@ -11,6 +11,7 @@ category: "resources"
 * [CMU summary of gdb commands for x86-64](http://csapp.cs.cmu.edu/3e/docs/gdbnotes-x86-64.pdf)
 * [JHU CSF x86-64 assembly language guide](https://jhucsf.github.io/csfdocs/assembly-tips-v0.1.1.pdf)
 
+<!--
 # Example code
 
 ## Precedence climbing example
@@ -45,6 +46,7 @@ OP_MINUS[-]
 </pre></div>
 
 Please [let me know](mailto:daveho@cs.jhu.edu) if you find bugs in this code!
+-->
 
 # Exam review materials
 
@@ -60,10 +62,12 @@ For Exam 1:
 * [Fall 2020 Exam 2](resources/exam02-628.pdf), [Solution](resources/exam02_soln.pdf) (Questions 1–5 are relevant)
 * [Fall 2021 Exam 1](resources/exam01-fall2021.pdf), [Solution](resources/exam01-fall2021-solution.pdf) (All questions are relevant)
 
+<!--
 For Exam 2:
 
 * [Fall 2020 Exam 2](resources/exam02-628.pdf), [Solution](resources/exam02_soln.pdf) (Question 6 is relevant)
 * [Fall 2021 Exam 2](resources/exam02-fall2021.pdf), [Solution](resources/exam02-fall2021-solution.pdf) (Questions 3 and 4 are relevant)
+-->
 
 <!--
 We're not actually covering attribute grammars any more.
@@ -71,9 +75,11 @@ We're not actually covering attribute grammars any more.
 * [Fall 2020 Exam 3](resources/exam03-628.pdf), [Solution](resources/exam03_soln.pdf) (Question 1 is relevant)
 -->
 
+<!--
 For Exam 3:
 
 * [Fall 2020 Exam 3](resources/exam03-628.pdf), [Solution](resources/exam03_soln.pdf) (Question 2–3 are relevant)
 * [Fall 2020 Exam 4](resources/exam04-628.pdf), [Solution](resources/exam04_soln.pdf) (Questions 1–4 are relevant)
 * [Fall 2021 Exam 3](resources/exam03-fall2021.pdf), [Solution](resources/exam03-fall2021-solution.pdf) (All questions are relevant)
 * [Fall 2022 Exam 3](resources/exam03-fall2022.pdf), [Solution](resources/exam03-fall2022-solution.pdf) (All questions are relevant)
+-->
