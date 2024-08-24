@@ -31,4 +31,5 @@ and/or Gradescope.
 
 ## News
 
-* **Aug 26** — Welcome!
+* **Aug 26** — Welcome! [Assignment 1](assign/assign01.html) is due Friday, September
+  13th by 11 pm.
