@@ -142,6 +142,10 @@ code.highlighter-rouge {
   margin-top: 0.5em;
 }
 
+.content-image img {
+  max-width: 100%;
+}
+
 /*
 vim:ts=2:
 */
