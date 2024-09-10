@@ -36,5 +36,7 @@ and/or Gradescope.
 
 ## News
 
+* **Sep 10** — [Assignment 2](assign/assign02.html) has two milestones, due
+  Monday, Sep 23rd and Thursday, Oct 3rd, respectively.
 * **Aug 26** — Welcome! [Assignment 1](assign/assign01.html) is due Friday, September
   13th by 11 pm.
