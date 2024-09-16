@@ -82,17 +82,15 @@ left brace (`{`), right brace (`}`), and comma (`,`).
 
 You will need to change the productions
 
-<div class='highlighter-rouge'><pre>
-Unit &rarr; Stmt
+<div class='highlighter-rouge'><pre><code>Unit &rarr; Stmt
 Unit &rarr; Stmt Unit
-</pre></div>
+</code></pre></div>
 
 to
 
-<div class='highlighter-rouge'><pre>
-Unit &rarr; TStmt
+<div class='highlighter-rouge'><pre><code>Unit &rarr; TStmt
 Unit &rarr; TStmt Unit
-</pre></div>
+</code></pre></div>
 
 The "`TStmt`" nonterminal means "top-level statement", which means statements
 that can appear in the global scope.
@@ -101,25 +99,24 @@ You will also need to implement the following new productions
 (each occurrence of blue italicized text beginning with <code><i style="color:blue;">--</i></code>
 represents an explanatory comment, and is not part of the production):
 
-<div class='highlighter-rouge'><pre>
-TStmt &rarr;      Stmt
+<div class='highlighter-rouge'><pre><code>TStmt &rarr;      Stmt
 TStmt &rarr;      Func
-Stmt &rarr;       if ( A ) { SList }                        <i style="color:blue;">-- if statement</i>
-Stmt &rarr;       if ( A ) { SList } else { SList }         <i style="color:blue;">-- if/else statement </i>
-Stmt &rarr;       while ( A ) { SList }                     <i style="color:blue;">-- while loop</i>
-Func &rarr;       function ident ( OptPList ) { SList }     <i style="color:blue;">-- function definition</i>
-OptPList &rarr;   PList                                     <i style="color:blue;">-- optional parameter list</i>
+Stmt &rarr;       if ( A ) { SList }                     <i style="color:blue;">-- if stmt</i>
+Stmt &rarr;       if ( A ) { SList } else { SList }      <i style="color:blue;">-- if/else stmt </i>
+Stmt &rarr;       while ( A ) { SList }                  <i style="color:blue;">-- while loop</i>
+Func &rarr;       function ident ( OptPList ) { SList }  <i style="color:blue;">-- function def</i>
+OptPList &rarr;   PList                                  <i style="color:blue;">-- opt. param list</i>
 OptPList &rarr;   ε
-PList &rarr;      ident                                     <i style="color:blue;">-- nonempty parameter list</i>
+PList &rarr;      ident                            <i style="color:blue;">-- nonempty param list</i>
 PList &rarr;      ident , PList
-SList &rarr;      Stmt                                      <i style="color:blue;">-- statement list</i>
+SList &rarr;      Stmt                             <i style="color:blue;">-- stmt list</i>
 SList &rarr;      Stmt SList
-F &rarr;          ident ( OptArgList )                      <i style="color:blue;">-- function call</i>
-OptArgList &rarr; ArgList                                   <i style="color:blue;">-- optional argument list</i>
+F &rarr;          ident ( OptArgList )             <i style="color:blue;">-- function call</i>
+OptArgList &rarr; ArgList                          <i style="color:blue;">-- opt. arg list</i>
 OptArgList &rarr; ε
-ArgList &rarr;    L                                         <i style="color:blue;">-- nonempty argument list</i>
+ArgList &rarr;    L                                <i style="color:blue;">-- nonempty arg list</i>
 ArgList &rarr;    L , ArgList
-</pre></div>
+</code></pre></div>
 
 Note that the <code class='highlighter-rouge'>OptPList &rarr; ε</code> and
 <code class='highlighter-rouge'>OptArgList &rarr; ε</code> productions are
@@ -133,7 +130,7 @@ represent the constructs in the resulting AST. As with Assignment 1,
 you should try to structure the AST in a way that will make it
 easy for the interpreter to analyze and evaluate.  As a concrete example,
 consider the following input (which is [`function02.in` in the
-test repository](https://github.com/jhucompilers/fall2023-tests/blob/main/assign02/input/function02.in)):
+test repository](https://github.com/jhucompilers/fall2024-tests/blob/main/assign02/input/function02.in)):
 
 ```
 var g;
@@ -155,8 +152,7 @@ q(1);
 Here is a test run showing how the reference solution turns this input
 into an AST (user input in **bold**):
 
-<div class='highlighter-rouge'><pre>
-$ <b>$ASSIGN02_DIR/minilang -p input/function02.in</b>
+<div class='highlighter-rouge'><pre><code>$ <b>$ASSIGN02_DIR/minilang -p input/function02.in</b>
 UNIT
 +--STATEMENT
 |  +--VARDEF
@@ -196,7 +192,7 @@ UNIT
       +--VARREF[q]
       +--ARGLIST
          +--INT_LITERAL[1]
-</pre></div>
+</code></pre></div>
 
 This is intended as an example. You may structure the AST in whatever way
 seems most appropriate.
@@ -403,10 +399,12 @@ them as C++ functions in the interpreter program. For example,
 here possible implementation of the required `print` function:
 
 ```c++
-Value Interpreter::intrinsic_print(Value args[], unsigned num_args,
-                                   const Location &loc, Interpreter *interp) {
+Value Interpreter::intrinsic_print(
+    Value args[], unsigned num_args,
+    const Location &loc, Interpreter *interp) {
   if (num_args != 1)
-    EvaluationError::raise(loc, "Wrong number of arguments passed to print function");
+    EvaluationError::raise(
+      loc, "Wrong number of arguments passed to print function");
   printf("%s", args[0].as_str().c_str());
   return Value();
 }
@@ -692,7 +690,7 @@ program is complete.
 
 ## Testing
 
-The [fall2023-tests](https://github.com/jhucompilers/fall2023-tests)
+The [fall2024-tests](https://github.com/jhucompilers/fall2024-tests)
 repository has tests you can use to check your implementation.
 
 The procedure for running tests is exactly the same as in [Assignment 1](assign01.html#testing),

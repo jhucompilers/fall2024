@@ -51,8 +51,7 @@ These are the grammar productions implemented in the starter code
 (which is adapted from the [astdemo](https://github.com/daveho/astdemo)
 example code):
 
-<div class="highlighter-rouge"><pre>
-Unit &rarr; Stmt
+<div class="highlighter-rouge"><pre><code>Unit &rarr; Stmt
 Unit &rarr; Stmt Unit
 Stmt &rarr; E ;
 E    &rarr; T E'
@@ -65,14 +64,13 @@ T'   &rarr; / F T'
 T'   &rarr; ε
 F    &rarr; number
 F    &rarr; ident
-F    &rarr; <code>(</code> E <code>)</code>
-</pre></div>
+F    &rarr; ( E )
+</code></pre></div>
 
 You will add the following productions to the grammar (implement these
 in `Parser2`):
 
-<div class="highlighter-rouge"><pre>
-Stmt &rarr; <code>var</code> ident <code>;</code>
+<div class="highlighter-rouge"><pre><code>Stmt &rarr; var ident ;
 A    &rarr; ident <code>=</code> A
 A    &rarr; L
 L    &rarr; R <code>||</code> R
@@ -85,7 +83,7 @@ R    &rarr; E <code>&gt;=</code> E
 R    &rarr; E <code>==</code> E
 R    &rarr; E <code>!=</code> E
 R    &rarr; E
-</pre></div>
+</code></pre></div>
 
 Note that the symbols beginning with an upper-case letter
 (e.g., `Stmt`, `A`, `L`, `R`, `E`, `E'`, etc.) are nonterminals, and all other symbols
@@ -93,27 +91,19 @@ Note that the symbols beginning with an upper-case letter
 
 You will also need to change the production
 
-<div class="highlighter-rouge"><pre>
-Stmt &rarr; E ;
-</pre></div>
+<div class="highlighter-rouge"><pre><code>Stmt &rarr; E ;</code></pre></div>
 
 to
 
-<div class="highlighter-rouge"><pre>
-Stmt &rarr; A ;
-</pre></div>
+<div class="highlighter-rouge"><pre><code>Stmt &rarr; A ;</code></pre></div>
 
 You will also need to change the production
 
-<div class="highlighter-rouge"><pre>
-F &rarr; ( E )
-</pre></div>
+<div class="highlighter-rouge"><pre><code>F &rarr; ( E )</code></pre></div>
 
 to
 
-<div class="highlighter-rouge"><pre>
-F &rarr; ( A )
-</pre></div>
+<div class="highlighter-rouge"><pre><code>F &rarr; ( A )</code></pre></div>
 
 You will need to add new AST node types to `ast.h` and `ast.cpp`
 to represent the new constructs added to the language.
