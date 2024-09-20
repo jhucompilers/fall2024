@@ -84,10 +84,6 @@ span.compilers {
   font-weight: bold;
 }
 
-li span.compilers {
-  margin-top: -0.5em;
-}
-
 #navbar li, span.compilers {
   font-size: 12pt;  /* because #navbar specified font-size: 0; */
   display: inline;
