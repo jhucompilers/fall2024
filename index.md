@@ -36,6 +36,9 @@ and/or Gradescope.
 
 ## News
 
+* **Sep 23** — Exam 1 will take place in class on Wednesday, Oct 2nd.
+  You are permitted to bring one sheet of *hand-written* notes.
+  Review materials are available on the [Resources](resources.html) page.
 * **Sep 10** — [Assignment 2](assign/assign02.html) has two milestones, due
   Monday, Sep 23rd and Thursday, Oct 3rd, respectively.
 * **Aug 26** — Welcome! [Assignment 1](assign/assign01.html) is due Friday, September
