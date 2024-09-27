@@ -310,30 +310,6 @@ rules:
 2. All further references to the object should also be managed by
    `std::shared_ptr<Type>` instances created via copying or assignment
 
-<!--
-You should *not* ever allow two "unrelated" `std::shared_ptr<Type>` instances
-to be created from the same "raw" pointer. The following code illustrates
-the correct and incorrect ways to create and refer to `Type` objects.
-
-```c++
-// a new type object should be immediately wrapped by a shared_ptr
-std::shared_ptr<Type> uchar_type(new BasicType(BasicTypeKind::CHAR, false));
-
-std::shared_ptr<Type> copy1(uchar_type); // good
-std::shared_ptr<Type> copy2;
-copy2 = uchar_type;                      // this is also fine
-
-Type *ushort_type = new BasicType(BasicTypeKind::SHORT, true); // dangerous raw pointer
-
-std::shared_ptr<Type> copy3(ushort_type); // problematic
-std::shared_ptr<Type> copy4(ushort_type); // problematic
-```
-
-In the code above, `copy3` and `copy4` will use different (unrelated) reference counts
-for the type object, leading to a high likelihood that the type object will be
-destroyed at a point when there are still `shared_ptr` objects referring to it.
--->
-
 The easiest way to ensure both rules are followed is to consistently use
 `std::make_shared` when creating objects to be managed by `std::shared_ptr`.
 For example:
@@ -368,7 +344,11 @@ std::shared_ptr<Type> copy3(ushort_type); // problematic
 std::shared_ptr<Type> copy4(ushort_type); // problematic
 ```
 
-This is easy to avoid if you use `std::make_shared` consistently.
+In the code above, `copy3` and `copy4` will use different (unrelated) reference counts
+for the type object, leading to a high likelihood that the type object will be
+destroyed at a point when there are still `shared_ptr` objects referring to it.
+
+This situation is easy to avoid if you use `std::make_shared` consistently.
 
 ### Struct types
 
