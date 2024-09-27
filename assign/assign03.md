@@ -310,6 +310,7 @@ rules:
 2. All further references to the object should also be managed by
    `std::shared_ptr<Type>` instances created via copying or assignment
 
+<!--
 You should *not* ever allow two "unrelated" `std::shared_ptr<Type>` instances
 to be created from the same "raw" pointer. The following code illustrates
 the correct and incorrect ways to create and refer to `Type` objects.
@@ -331,6 +332,43 @@ std::shared_ptr<Type> copy4(ushort_type); // problematic
 In the code above, `copy3` and `copy4` will use different (unrelated) reference counts
 for the type object, leading to a high likelihood that the type object will be
 destroyed at a point when there are still `shared_ptr` objects referring to it.
+-->
+
+The easiest way to ensure both rules are followed is to consistently use
+`std::make_shared` when creating objects to be managed by `std::shared_ptr`.
+For example:
+
+```c++
+std::shared_ptr<Type> type =
+  std::make_shared<BasicType>(BasicTypeKind::CHAR, false);
+```
+
+This is equivalent to
+
+```c++
+std::shared_ptr<Type> type(new BasicType(BasicTypeKind::CHAR, false));
+```
+
+and actually slightly more efficient.
+
+`std::shared_ptr` instances can be assigned, copied, returned, etc.,
+just like "normal" pointers, with the advantage that the managed object
+will be deleted once there are no `std::shared_ptr` instances pointing
+to it.
+
+Under no circumstances should you allow a "plain" dynamically allocated
+object to be managed by two "unrelated" `std::shared_ptr` instances.
+For example:
+
+```c++
+// dangerous raw pointer
+Type *ushort_type = new BasicType(BasicTypeKind::SHORT, true);
+
+std::shared_ptr<Type> copy3(ushort_type); // problematic
+std::shared_ptr<Type> copy4(ushort_type); // problematic
+```
+
+This is easy to avoid if you use `std::make_shared` consistently.
 
 ### Struct types
 
@@ -553,12 +591,16 @@ The `promote_to_int` member function could be implemented this way:
 Node *SemanticAnalysis::promote_to_int(Node *n) {
   assert(n->get_type()->is_integral());
   assert(n->get_type()->get_basic_type_kind() < BasicTypeKind::INT);
-  std::shared_ptr<Type> type(new BasicType(BasicTypeKind::INT, n->get_type()->is_signed()));
+  std::shared_ptr<Type> type =
+    std::make_shared<BasicType>(BasicTypeKind::INT,
+                                n->get_type()->is_signed());
   return implicit_conversion(n, type);
 }
 
-Node *SemanticAnalysis::implicit_conversion(Node *n, const std::shared_ptr<Type> &type) {
-  std::unique_ptr<Node> conversion(new Node(AST_IMPLICIT_CONVERSION, {n}));
+Node *SemanticAnalysis::implicit_conversion(Node *n,
+                                            std::shared_ptr<Type> type) {
+  std::unique_ptr<Node> conversion(
+    new Node(AST_IMPLICIT_CONVERSION, {n}));
   conversion->set_type(type);
   return conversion.release();
 }
