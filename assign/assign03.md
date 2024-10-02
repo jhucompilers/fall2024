@@ -105,7 +105,9 @@ export ASSIGN03_DIR=~/compilers/assign03
 assuming that `~/compilers/assign03` is the directory containing your code.
 
 You will want to change directory into the directory `assign03` of
-your clone of [the public test repository](https://github.com/jhucompilers/fall2023-tests).
+your clone of [the public test repository](https://github.com/jhucompilers/fall2024-tests).
+(Running `git pull` is a good idea, since you might not have the Assignment 3
+tests yet, or we might have added some since the last time you pulled.)
 
 The test inputs are in the "`input`" directory.  To run a test, use the
 `run_test.rb` script as follows, specifying the base name of the test you want
@@ -122,6 +124,14 @@ You can see the actual output and/or error message produced by your program
 in the `actual_output` and `actual_error` directories. You can compare these
 to the expected output and error in the `expected_output` and `expected_error`
 directories.
+
+You can also use the command
+
+```
+./run_all.rb
+```
+
+to run all of the tests and report the results.
 
 ## Detailed requirements, specifications, and advice
 
