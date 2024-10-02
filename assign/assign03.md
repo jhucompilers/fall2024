@@ -343,6 +343,40 @@ definition. However, C allows any number of occurrences of a function, as long a
 the return types and parameter types match exactly, and at most one occurrence
 is a definition.
 
+### Parameter names
+
+It is legal for a function declaration to use different parameter names than
+a function definition. For example:
+
+```c
+int sum(int a, int b);
+
+int sum(int x, int y) {
+  return x + y;
+}
+```
+
+To handle this possibility, but still maintain the expectation that a
+function's symbol table is created at the point of the first declaration
+or definition of the function, your semantic analyzer will need to
+rename the symbol table entries for the function's parameters prior to
+visiting the function's body, since any variable references in the body
+will use the *definition*'s parameter names.
+
+<div class='admonition tip'>
+  <div class='title'>Tip</div>
+  <div class='content' markdown='1'>
+The autograder will not test your compiler on any inputs
+where the function declaration and definition use different parameter
+names but otherwise are a perfect match. We mention this issue
+only because you may see test cases in the public test repository
+where a function's declaration and definition use different parameter
+names.
+  </div>
+</div>
+
+### Symbol table names
+
 Each symbol table must have a name:
 
 1. The name of the global symbol table is "`global`"
