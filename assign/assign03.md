@@ -3,6 +3,11 @@ layout: default
 title: "Assignment 3"
 ---
 
+<div style="text-align: center; font-style: italic; font-size: 120%;">
+  Note: this is a preliminary assignment description.
+  Important details could change.
+</div>
+
 **Due date**: Wednesday, Oct 23rd by 11pm Baltimore time
 
 # Compiler: semantic analysis
@@ -246,10 +251,8 @@ There are three kinds of symbol table entries (defined by the
 `SymbolTableKind` enumeration type): variables, functions, and types.
 Type entries are only used for struct data types.
 
-You can use the `define` and `declare` member functions of `SymbolTable`
-to create a new symbol table entry.  `define` should be used for
-function definitions and all variable declarations. `declare` should
-be used only for function declarations (a.k.a. function prototypes.)
+You can use the `add_entry` member function to add a new entry to
+a `SymbolTable`.
 
 Like the interpreter language in Assignments 1 and 2, C is a block
 scoped language. Each statement list (represented by `AST_STATEMENT_LIST`
@@ -259,24 +262,106 @@ name in the same scope. However, it is allowed to define a variable
 in an inner scope whose name is the same as a variable in an outer
 (enclosing) scope.
 
+<div class='admonition info'>
+  <div class='title'>Note</div>
+  <div class='content' markdown='1'>
+Note that in C, a function's parameters are considered to be in the same
+scope as the body of the function. So, the statement list defining the
+body of a function should use the same symbol table as the one in which
+the function's parameters are defined.
+  </div>
+</div>
+
 Each `SymbolTable` has a link to its "parent" `SymbolTable`, representing
 the enclosing scope. The `SymbolTable` representing the global scope
 does not have a parent.
 
-You might find the following helper functions to be useful for entering
-and leaving scopes in the source program:
+The following helper functions for entering and leaving scopes in the source program
+are provided:
 
 ```c++
-void SemanticAnalysis::enter_scope() {
-  SymbolTable *scope = new SymbolTable(m_cur_symtab);
-  m_cur_symtab = scope;
+SymbolTable *SemanticAnalysis::enter_scope(const std::string &name) {
+  SymbolTable *symtab = new SymbolTable(m_cur_symtab, name);
+  m_all_symtabs.push_back(symtab);
+  m_cur_symtab = symtab;
+  return symtab;
 }
 
 void SemanticAnalysis::leave_scope() {
+  assert(m_cur_symtab->get_parent() != nullptr);
   m_cur_symtab = m_cur_symtab->get_parent();
-  assert(m_cur_symtab != nullptr);
 }
 ```
+
+Note that the `m_cur_symtab` member variable will always point to the
+`SymbolTable` representing the current scope.
+
+### Expectations for symbol tables
+
+We will test your compiler's semantic analyzer by using the `-a` command line
+option, which prints the contents of symbol tables after semantic analysis completes.
+This section describes the expectations for creating and populating symbol tables.
+
+A `SymbolTable` should be created (using the `enter_scope` function) for each
+statement list in the input source code. Note that in a function definition,
+the statement list defining the body of the function should use the same symbol
+table as the one containing the function's parameters. Symbol tables should be
+created in the same order as the order in which the corresponding statement
+lists appear in the input source code.
+
+Symbol table entries should be added to the current scope's `SymbolTable` in the
+order in which they appear in the input source code.
+
+A function should have a single "canonical" `SymbolTable` representing its
+parameters and body. This symbol table should be created when the first declaration
+or definition of the function is encountered. This means that when a function is
+encountered a second time, the semantic analyzer must "re-enter" the symbol
+table created when the function was encountered for the first time. This
+can be as simple as doing something like:
+
+```c++
+SymbolTable *fn_symtab = /* pointer to original SymbolTable */;
+m_cur_symtab = fn_symtab;
+```
+
+When a function is encountered for the first time, the semantic analyzer should
+determine its return type, visit its parameters (creating symbol table entries
+for them), create a `FunctionType` representing the function's type, and create
+a symbol table entry for the function in the `SymbolTable` representing the global scope.
+
+When a function is encountered for a *second* time (or even a third time), the
+semantic analyzer should re-enter the function's parameter/body `SymbolTable`
+and check the "current" function declaration or definition to determine whether it
+matches the previous declaration or definition. Specifically, if the return type,
+number of parameters, or types of parameters in the "current" function does
+do not exactly match the previous declaration or definition, a
+`SemanticError` exception should be raised.
+
+Usually, when a function appears multiple times, the first occurrence will be
+a declaration (a.k.a. function prototype), and the second occurrence will be a
+definition. However, C allows any number of occurrences of a function, as long as
+the return types and parameter types match exactly, and at most one occurrence
+is a definition.
+
+### Array parameters
+
+In a function declaration or definition, if any parameter has an array type,
+it should be converted to an "equivalent" pointer type. For example, the
+function
+
+```c
+void sum_arr(int p[0], int n);
+```
+
+should be handled as though it were actually
+
+```c
+void sum_arr(int *p, int n);
+```
+
+This should be reasonably easy to do: in `visit_function_parameter`, once the
+type of the parameter is known, check whether it's an array type, and if so,
+determine the equivalent pointer type.
 
 ### Type representations
 
@@ -410,6 +495,36 @@ the size of an array when the semantic analyzer sees an array declarator.
 When later on you implement code generation, `LiteralValue` will likely be
 useful for representing integer, character, and string constant values.
 
+### Dealing with variable declarations
+
+Here is a suggested strategy for dealing with variable declarations
+and function parameters:
+
+Start by visiting the base type. The initial assumption is that
+this will be the type of the variable, but that assumption could be
+modified if there are pointer and/or array declarators.
+
+Recursively visit the declarator or declarators. Each one will define
+one variable. When the visitation of a declarator is finished, the
+semantic analyzer will know both the name and the exact type of the
+variable, which is the information it needs in order to create a symbol
+table entry for the variable.
+
+It will help to have member variables for the name and type for the
+variable that the semantic analyzer is currently working on. The member
+variable for the type could be something like
+
+```c++
+std::shared_ptr<Type> m_var_type;
+```
+
+A variable's type can be updated incrementally as declarators are handled.
+You'll need to think about whether this should be done when traversing
+"down" the tree (towards the `AST_NAMED_DECLARATOR` node) or when traversing
+back "up" the tree. You should find it useful to use the `-p` option
+to print the AST so that you can see how the nodes representing declarators
+are structured in the tree.
+
 ### Operators
 
 C has a fairly large number of operators. To reduce the complexity of
@@ -432,7 +547,7 @@ assignment (`+=` and similar), or increment/decrement (`++` and `--`).
 
 ### C semantic rules
 
-Note that the [slides for Lecture 11](../lectures/lecture11-public.pdf) are a very
+Note that the [slides for Lecture 11](../lectures/lecture11-public.pdf) are a
 good overview of the semantic rules your semantic analyzer is expected to
 check.
 
