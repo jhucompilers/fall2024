@@ -505,9 +505,13 @@ the following:
 
 ```c++
 std::string name = /* the name of the struct type */;
+Location loc = /* Location of the struct type */;
 std::shared_ptr<Type> struct_type(new StructType(name));
 
-m_cur_symtab->define(SymbolTableKind::TYPE, "struct " + name, struct_type);
+m_cur_symtab->add_entry(loc,
+                        SymbolTableKind::TYPE,
+                        "struct " + name,
+                        struct_type);
 ```
 The reason that the struct type will need to be entered into the symbol
 table of the current scope immediately is that struct types can refer to
