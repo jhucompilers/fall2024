@@ -36,6 +36,10 @@ and/or Gradescope.
 
 ## News
 
+<!--
+* **Oct 2** — [Assignment 3](assign/assign03.html) is due Wednesday, Oct 23rd by 11 pm.
+-->
+
 * **Sep 23** — Exam 1 will take place in class on Wednesday, Oct 2nd.
   You are permitted to bring one sheet of *hand-written* notes.
   Review materials are available on the [Resources](resources.html) page.
