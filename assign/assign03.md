@@ -106,7 +106,7 @@ assuming that `~/compilers/assign03` is the directory containing your code.
 
 You will want to change directory into the directory `assign03` of
 your clone of [the public test repository](https://github.com/jhucompilers/fall2024-tests).
-(Running `git pull` is a good idea, since you might not have the Assignment 3
+(Running `git pull` first is a good idea, since you might not have the Assignment 3
 tests yet, or we might have added some since the last time you pulled.)
 
 The test inputs are in the "`input`" directory.  To run a test, use the
