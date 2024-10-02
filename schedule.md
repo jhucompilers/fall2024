@@ -43,7 +43,7 @@ Oct 14 | [Intermediate representations](lectures/lecture13-public.pdf) | EaC 5.1
 Oct 16 | [Code generation for expressions](lectures/lecture14-public.pdf) | EaC 7.1–7.4 | 
 Oct 17–18 | **Fall break (no classes)** |  | 
 Oct 21 | [x86-64 assembly language, low-level codegen](lectures/lecture15-public.pdf) |  | 
-Oct 23 | [Conditions, decisions, and loops](lectures/lecture16-public.pdf) | EaC 7.8 | <span class='tentative'>A3 due
+Oct 23 | [Conditions, decisions, and loops](lectures/lecture16-public.pdf) | EaC 7.8 | [A3](assign/assign03.html) due
 Oct 28 | [Pointers, arrays, structs, function calls](lectures/lecture17-public.pdf) | EaC 7.5–7.7, 7.9 | 
 Oct 30 | Exam 2 review, codegen work day |  | <span class='tentative'>A4 MS1 due<br>Fri 11/1
 Nov 4 | **Exam 2** |  | 
