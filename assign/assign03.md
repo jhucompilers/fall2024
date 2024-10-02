@@ -776,12 +776,13 @@ extra functionality, this is a place you could document that.
 
 ## Submitting
 
-Create a zipfile with all of your code, your `Makefile`, and your `README.txt`.
-Example commands:
+Create a zipfile using the command
 
 ```
-make clean
-zip -9r solution.zip *.h *.cpp *.rb *.y *.l Makefile README.txt
+make solution.zip
 ```
 
-Upload the zipfile to Gradescope as **Assignment 3**.
+**Note**: make sure your `README.txt` is in the top-level directory (i.e., the one
+that contains the `Makefile`.)
+
+Upload the `solution.zip` zipfile to Gradescope as **Assignment 3**.
