@@ -381,7 +381,7 @@ Each symbol table must have a name:
 
 1. The name of the global symbol table is "`global`"
 2. For a symbol table representing the parameters and body of a function,
-   the symbol table's name should be "<code class="language-plaintext highlighter-rouge">Function <i>name</i></code>",
+   the symbol table's name should be "<code class="language-plaintext highlighter-rouge">function <i>name</i></code>",
    where <i>name</i> is the name of the function.
 3. For a symbol table representing any statement list other than the one
    defining a function's parameters and body, the symbol table's name
