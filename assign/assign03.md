@@ -3,11 +3,6 @@ layout: default
 title: "Assignment 3"
 ---
 
-<div style="text-align: center; font-style: italic; font-size: 120%;">
-  Note: this is a preliminary assignment description.
-  Important details could change.
-</div>
-
 **Due date**: Wednesday, Oct 23rd by 11pm Baltimore time
 
 # Compiler: semantic analysis
