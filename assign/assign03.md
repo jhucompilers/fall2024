@@ -299,7 +299,7 @@ Note that the `m_cur_symtab` member variable will always point to the
 ### Expectations for symbol tables
 
 We will test your compiler's semantic analyzer by using the `-a` command line
-option, which prints the contents of symbol tables after semantic analysis completes.
+option, which prints the contents of all symbol tables after semantic analysis completes.
 This section describes the expectations for creating and populating symbol tables.
 
 A `SymbolTable` should be created (using the `enter_scope` function) for each
@@ -342,6 +342,20 @@ a declaration (a.k.a. function prototype), and the second occurrence will be a
 definition. However, C allows any number of occurrences of a function, as long as
 the return types and parameter types match exactly, and at most one occurrence
 is a definition.
+
+Each symbol table must have a name:
+
+1. The name of the global symbol table is "`global`"
+2. For a symbol table representing the parameters and body of a function,
+   the symbol table's name should be "<code class="language-plaintext highlighter-rouge">Function <i>name</i></code>",
+   where <i>name</i> is the name of the function.
+3. For a symbol table representing any statement list other than the one
+   defining a function's parameters and body, the symbol table's name
+   should be "<code class="language-plaintext highlighter-rouge">block <i>N</i></code>", where <i>N</i> is the line
+   number stored in the statement list node's `Location`
+
+You can see the expected symbol table names by looking at the expected output
+of the test cases in the test repository.
 
 ### Array parameters
 
