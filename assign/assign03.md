@@ -566,11 +566,12 @@ Start by visiting the base type. The initial assumption is that
 this will be the type of the variable, but that assumption could be
 modified if there are pointer and/or array declarators.
 
-Recursively visit the declarator or declarators. Each one will define
-one variable. When the visitation of a declarator is finished, the
-semantic analyzer will know both the name and the exact type of the
-variable, which is the information it needs in order to create a symbol
-table entry for the variable.
+Recursively visit the child or children representing the declarator
+or declarators.  Each such child will define one variable. When the
+visitation of a child declarator is finished, the semantic analyzer
+will know both the name and the exact type of the variable, which is
+the information it needs in order to create a symbol table entry for
+the variable.
 
 It will help to have member variables for the name and type for the
 variable that the semantic analyzer is currently working on. The member
