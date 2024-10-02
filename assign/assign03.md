@@ -182,7 +182,7 @@ of each visit member function is to recursively visit children,
 this effects a traversal of the AST.
 
 Note, however, that certain `visit_` member functions are overridden.
-These are the ones which (at a minimum) you will need to implement to
+These are the ones which you will likely need to implement to
 perform semantic analysis.
 
 The goal of semantic analysis is to build symbol tables recording what
