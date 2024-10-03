@@ -6,7 +6,9 @@ title: "Assignment 2"
 **Due dates**:
 
 * Milestone 1 due **Mon, Sept 23** by 11pm Baltimore time
-* Milestone 2 due **Thurs, Oct 3** by 11pm Baltimore time
+* Milestone 2 due **Sat, Oct 5th** by 11pm Baltimore time
+
+*Update 10/3*: Moved back Milestone 2 due date to Oct 5th.
 
 # Interpreter part 2: Functions, control structures, runtime
 
