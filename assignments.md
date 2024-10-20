@@ -32,3 +32,4 @@ Assignment | Due
 [Assignment 1](assign/assign01.html) | Friday, Sep 13th by 11pm
 [Assignment 2](assign/assign02.html) | MS1 due Monday, Sep 23rd by 11 pm<br>MS2 due Saturday, Oct 5th by 11 pm
 [Assignment 3](assign/assign03.html) | Wednesday, Oct 23rd by 11pm
+[Assignment 4](assign/assign04.html) | MS1 due Friday, Nov 1st by 11 pm<br>MS2 due Friday, Nov 15th by 11 pm
