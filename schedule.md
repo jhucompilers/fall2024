@@ -45,11 +45,11 @@ Oct 17–18 | **Fall break (no classes)** |  |
 Oct 21 | [x86-64 assembly language, low-level codegen](lectures/lecture15-public.pdf) |  | 
 Oct 23 | [Conditions, decisions, and loops](lectures/lecture16-public.pdf) | EaC 7.8 | [A3](assign/assign03.html) due
 Oct 28 | [Pointers, arrays, structs, function calls](lectures/lecture17-public.pdf) | EaC 7.5–7.7, 7.9 | 
-Oct 30 | Exam 2 review, codegen work day |  | <span class='tentative'>A4 MS1 due<br>Fri 11/1
+Oct 30 | Exam 2 review, codegen work day |  | [A4](assign/assign04.html) MS1 due<br>Fri 11/1
 Nov 4 | **Exam 2** |  | 
 Nov 6 | <span class='tentative'>Intro to code optimization, local value numbering, copy propagation</span> | EaC 8.1–8.5 | 
 Nov 11 | <span class='tentative'>Global optimization/liveness analysis</span> | EaC 8.6 | 
-Nov 13 | <span class='tentative'>Local register allocation</span> | EaC 13.1–13.3 | <span class='tentative'>A4 MS2 due<br>Fri 11/15</span>
+Nov 13 | <span class='tentative'>Local register allocation</span> | EaC 13.1–13.3 | [A4](assign/assign04.html) MS2 due<br>Fri 11/15
 Nov 18 | <span class='tentative'>Peephole optimization</span> | EaC 11.5 | 
 Nov 20 | <span class='tentative'>Dataflow analysis</span> | EaC 9.1–9.2, <a href='lectures/kildall-popl73.pdf'>Kildall-POPL73</a> | 
 Nov 25–29 | **Fall recess (no classes)** |  | 
