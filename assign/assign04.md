@@ -27,7 +27,8 @@ your compiler generates in this assignment.
 
 ## Getting started
 
-I would recommend starting by making a copy of your code for assignment 3.
+This assignment is a continuation of [Assignment 3](assign/assign03.html),
+so that code will be your starting point.
 
 ## Grading breakdown
 
@@ -517,18 +518,24 @@ opcodes:
 
     LowLevelOpcode mov_opcode = select_ll_opcode(MINS_MOVB, size);
 
-    Operand src_operand = get_ll_operand(hl_ins->get_operand(1), size, ll_iseq);
-    Operand dest_operand = get_ll_operand(hl_ins->get_operand(0), size, ll_iseq);
+    Operand src_operand =
+      get_ll_operand(hl_ins->get_operand(1), size, ll_iseq);
+    Operand dest_operand =
+      get_ll_operand(hl_ins->get_operand(0), size, ll_iseq);
 
     if (src_operand.is_memref() && dest_operand.is_memref()) {
       // move source operand into a temporary register
       Operand::Kind mreg_kind = select_mreg_kind(size);
       Operand r10(mreg_kind, MREG_R10);
-      ll_iseq->append(new Instruction(mov_opcode, src_operand, r10));
+      ll_iseq->append(
+        new Instruction(mov_opcode, src_operand, r10)
+      );
       src_operand = r10;
     }
 
-    ll_iseq->append(new Instruction(mov_opcode, src_operand, dest_operand));
+    ll_iseq->append(
+      new Instruction(mov_opcode, src_operand, dest_operand)
+    );
     return;
   }
 ```
@@ -569,7 +576,7 @@ Example program | Example HL translation | Example LL translation
 [example27.c](https://github.com/jhucompilers/fall2024-tests/blob/main/assign04/input/example27.c) | [example27.txt](https://github.com/jhucompilers/fall2024-tests/blob/main/assign04/example_highlevel_code/example27.txt) |  [example27.S](https://github.com/jhucompilers/fall2024-tests/blob/main/assign04/example_lowlevel_code/example27.S)
 
 These low-level translations may be useful as a reference.
-Note that the test repository has more tests programs and example
+Note that the test repository has more test programs and example
 translations.
 
 ### Generating references to virtual registers
@@ -607,7 +614,7 @@ Set the `ASSIGN04_DIR` environment variable to wherever your compiler project
 is located, e.g.
 
 ```
-export ASSIGN04_DIR=~/git/assign04
+export ASSIGN04_DIR=~/compilers/assign04
 ```
 
 The `build.rb` script is used to invoke your compiler on a C source file,
