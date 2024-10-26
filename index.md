@@ -36,6 +36,9 @@ and/or Gradescope.
 
 ## News
 
+* **Oct 26** — Exam 1 will take place in class on Monday, Nov 4th.
+  You are permitted to bring one sheet of *hand-written* notes.
+  Review materials are available on the [Resources](resources.html) page.
 * **Oct 21** — [Assignment 4](assign/assign04.html) has two milestones,
   due Friday, Nov 1st and Friday, Nov 15th, respectively.
 * **Oct 3** — The due date for Milestone 2 of [Assignment 2](assign/assign02.html)

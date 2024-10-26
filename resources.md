@@ -62,12 +62,11 @@ For Exam 1:
 * [Fall 2020 Exam 2](resources/exam02-628.pdf), [Solution](resources/exam02_soln.pdf) (Questions 1–5 are relevant)
 * [Fall 2021 Exam 1](resources/exam01-fall2021.pdf), [Solution](resources/exam01-fall2021-solution.pdf) (All questions are relevant)
 
-<!--
 For Exam 2:
 
 * [Fall 2020 Exam 2](resources/exam02-628.pdf), [Solution](resources/exam02_soln.pdf) (Question 6 is relevant)
 * [Fall 2021 Exam 2](resources/exam02-fall2021.pdf), [Solution](resources/exam02-fall2021-solution.pdf) (Questions 3 and 4 are relevant)
--->
+* [Fall 2022 Exam 2](resources/exam02-fall2022.pdf), [Solution](resources/exam02-fall2022-solution.pdf) (Questions 3 and 4 are relvant)
 
 <!--
 We're not actually covering attribute grammars any more.
