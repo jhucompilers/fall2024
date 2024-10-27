@@ -47,7 +47,7 @@ Oct 23 | [Conditions, decisions, and loops](lectures/lecture16-public.pdf) | EaC
 Oct 28 | [Pointers, arrays, structs, function calls](lectures/lecture17-public.pdf) | EaC 7.5–7.7, 7.9 | 
 Oct 30 | Exam 2 review, codegen work day |  | [A4](assign/assign04.html) MS1 due<br>Fri 11/1
 Nov 4 | **Exam 2** |  | 
-Nov 6 | <span class='tentative'>Intro to code optimization, local value numbering, copy propagation</span> | EaC 8.1–8.5 | 
+Nov 6 | [Intro to code optimization, local value numbering, copy propagation](lectures/lecture18-public.pdf) | EaC 8.1–8.5 | 
 Nov 11 | <span class='tentative'>Global optimization/liveness analysis</span> | EaC 8.6 | 
 Nov 13 | <span class='tentative'>Local register allocation</span> | EaC 13.1–13.3 | [A4](assign/assign04.html) MS2 due<br>Fri 11/15
 Nov 18 | <span class='tentative'>Peephole optimization</span> | EaC 11.5 | 
