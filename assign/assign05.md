@@ -458,7 +458,7 @@ output redirected to `/dev/null`) of the
 test program, which multiplies two 500x500 matrices of `long` values:
 
 Version | Average running time
-------- | --------------------
+:-----: | :------------------:
 Unoptimized | 1.592 s
 Optimized | 0.278 s
 Optimized (peephole) | 0.186 s
