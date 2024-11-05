@@ -24,7 +24,7 @@ Nov 4,"**Exam 2**",,,
 Nov 6,"Intro to code optimization, local value numbering, copy propagation",lectures/lecture18-public.pdf,,"EaC 8.1–8.5"
 Nov 11,"<span class='tentative'>Global optimization/liveness analysis</span>","",,"EaC 8.6"
 Nov 13,"<span class='tentative'>Local register allocation</span>","",,"EaC 13.1–13.3","[A4](assign/assign04.html) MS2 due<br>Fri 11/15"
-Nov 18,"<span class='tentative'>Peephole optimization</span>",,,"EaC 11.5"
+Nov 18,"Peephole optimization",lectures/lecture21-public.pdf,,"EaC 11.5"
 Nov 20,"<span class='tentative'>Dataflow analysis</span>",,,"EaC 9.1–9.2, <a href='lectures/kildall-popl73.pdf'>Kildall-POPL73</a>",
 Nov 25–29,**Fall recess (no classes)**,
 Dec 2,"<span class='tentative'>Static single assignment (SSA) form</span>",,,
