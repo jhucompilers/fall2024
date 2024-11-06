@@ -33,7 +33,7 @@ The primary metric you should be optimizing for is the run-time efficiency of th
 
 Optimizing for (smaller) code size is also valid, but should be considered a secondary concern.
 
-Two benchmark programs are provided (in the
+Two CPU-intensive benchmark programs are provided (in the
 [assign05/input](https://github.com/jhucompilers/fall2024-tests/tree/master/assign05/input)
 subdirectory of the [test
 repository](https://github.com/jhucompilers/fall2024-tests)):
@@ -97,6 +97,17 @@ and so is a good measure of how long it took the compiled program to do
 its computation.  Your code optimizations should aim to reduce user time
 for the benchmark programs.
 
+<div class='admonition info'>
+  <div class='title'>Note</div>
+  <div class='content' markdown='1'>
+The example29 and example31 test cases are reasonable benchmark programs,
+but you should feel free to use additional benchmark programs, especially if
+they allow you to more fully exercise optimizations you've implemented.
+In any case, in your report you should be prepared to present an argument
+for why the benchmarks you used are "interesting."
+  </div>
+</div>
+
 ## Testing
 
 The [assign05](https://github.com/jhucompilers/fall2024-tests/tree/main/assign05)
@@ -105,7 +116,7 @@ directory in the test repository has the same test programs as in
 to set the `ASSIGN05_DIR` environment variable to the directory containing
 your compiled `nearly_cc` program. For Assignment 5, the `build.rb`,
 `run_test.rb`, and `run_all.rb` scripts have been updated so that they
-can take a `-o` command line argument to enable optimizations.
+can take command line options to enable (or disable) optimizations.
 For example:
 
 ```bash
@@ -121,6 +132,18 @@ We **highly** recommend running both `./run_all.rb` and `./run_all.rb -o`
 every time you make a change to your compiler. This will help you ensure that
 it continues to work correctly both with and without optimizations
 enabled.
+
+<div class='admonition info'>
+  <div class='title'>Note</div>
+  <div class='content' markdown='1'>
+Any command line options you pass to `build.rb`, `./run_test.rb`, or
+`run_all.rb` will be passed to your `nearly_cc` program. This can be
+very helpful for enabling or disabling specific optimizations or
+combinations of optimizations. Obviously, any command line options
+you would like to support will need to be added to
+`include/options.h` and `driver/options.cpp`.
+  </div>
+</div>
 
 ## Analysis and experiments
 
@@ -174,60 +197,6 @@ detailed suggestions for how to approach this assignment.
 
 ### How/where to implement optimizations
 
-<!--
-You will find `TODO` comments in the `generate` member function of the
-`LowLevelCodeGen` class (in `lowlevel_codegen.cpp`) which indicate where
-the high-level and low-level instruction sequences could be transformed.
-
-Here is an idea of what you might want the code of your
-`LowLevelCodeGen::generate` member function to look like:
-
-```c++
-std::shared_ptr<InstructionSequence>
-LowLevelCodeGen::generate(const std::shared_ptr<InstructionSequence> &hl_iseq) {
-  Node *funcdef_ast = hl_iseq->get_funcdef_ast();
-
-  // cur_hl_iseq is the "current" version of the high-level IR,
-  // which could be a transformed version if we are doing optimizations
-  std::shared_ptr<InstructionSequence> cur_hl_iseq(hl_iseq);
-
-  if (m_optimize) {
-    // High-level optimizations
-
-    // Create a control-flow graph representation of the high-level code
-    HighLevelControlFlowGraphBuilder hl_cfg_builder(cur_hl_iseq);
-    std::shared_ptr<ControlFlowGraph> cfg = hl_cfg_builder.build();
-
-    // Do local optimizations
-    LocalOptimizationHighLevel hl_opts(cfg);
-    cfg = hl_opts.transform_cfg();
-
-    // Convert the transformed high-level CFG back to an InstructionSequence
-    cur_hl_iseq = cfg->create_instruction_sequence();
-
-    // The function definition AST might have information needed for
-    // low-level code generation
-    cur_hl_iseq->set_funcdef_ast(funcdef_ast);
-  }
-
-  // Translate (possibly transformed) high-level code into low-level code
-  std::shared_ptr<InstructionSequence> ll_iseq = translate_hl_to_ll(cur_hl_iseq);
-
-  if (m_optimize) {
-    // ...could do transformations on the low-level code, including peephole
-    //    optimizations...
-  }
-
-  return ll_iseq;
-}
-```
-
-The `LocalOptimizationHighLevel` class mentioned above would be a subclass
-of `ControlFlowGraphTransform`, which would implement local optimizations
-on each basic block in the high-level code. (See the
-[Framework for optimizations](#framework-for-optimizations) section.)
--->
-
 For high-level optimizations, the `optimize` member function of the
 `HighLevelOpt` class (`hl_codegen/highlevel_opt.cpp`) is the correct place to
 put them. There is a code comment with a suggested approach. The general
@@ -265,60 +234,6 @@ and look for specific inefficiencies that you can eliminate.
 
 We *highly* recommend that you keep notes about your work, so that you
 have a written record you can refer to in preparing your report.
-
-<!--
-### Intermediate representations
-
-You can implement your optimization passes as transformations of
-`InstructionSequence` (linear IR) or `ControlFlowGraph` (control
-flow graph IR).  We recommend that you implement transformations
-constructively: for example, if transforming a `ControlFlowGraph`, the
-result of the transformation should be a different `ControlFlowGraph`,
-rather than an in-place modification of the original `ControlFlowGraph`.
-
-If you do transformations of an `InstructionSequence`, you will need to
-take control flow into account.  Any instruction that either
-
-* is a branch, or
-* has an immediate successor that is a labeled control-flow target
-
-should be considered the end of a basic block. However, it's probably better
-to create a `ControlFlowGraph`, since it makes basic blocks and control flow
-explicit, and your analysis can then focus on doing local optimizations within
-each basic block.
-
-If you decide to use the `ControlFlowGraph` intermediate representation,
-you can create it from an `InstructionSequence` as follows.
-For high-level code:
-
-```cpp
-std::shared_ptr<InstructionSequence> iseq =
-  /* InstructionSequence containing high-level code... */
-HighLevelControlFlowGraphBuilder cfg_builder(iseq);
-std::shared_ptr<ControlFlowGraph> cfg = cfg_builder.build();    
-```
-
-To convert a high-level `ControlFlowGraph` back to an `InstructionSequence`:
-
-```cpp
-std::shared_ptr<ControlFlowGraph> cfg = /* a ControlFlowGraph */
-std::shared_ptr<InstructionSequence> result_iseq = cfg->create_instruction_sequence();
-```
-
-Note that the `create_instruction_sequence()` method is not guaranteed
-to work if the structure of the `ControlFlowGraph` was modified.  I.e.,
-we do not recommend implementing optimizations which change control flow.
-Local optimizations (within single basic blocks) are recommended.
-
-### Framework for optimizations
-
-The [cfg\_transform.h](assign05/cfg_transform.h) and
-[cfg\_transform.cpp](assign05/cfg_transform.cpp) source files demonstrate
-how to transform a `ControlFlowGraph` by transforming each basic block.
-The idea is to override the `transform_basic_block` member function.
-In general, this class should be useful for implementing any local
-(basic block level) optimization.
--->
 
 ### Live variables analysis
 
