@@ -36,6 +36,8 @@ and/or Gradescope.
 
 ## News
 
+* **Oct 30** — [Assignment 5](assign/assign05.html) is due Friday, Dec 6th by 11 pm.
+  Note that late hours may *not* be used on this assignment, so please plan accordingly.
 * **Oct 26** — Exam 2 will take place in class on Monday, Nov 4th.
   You are permitted to bring one sheet of *hand-written* notes.
   Review materials are available on the [Resources](resources.html) page.
