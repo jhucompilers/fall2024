@@ -48,7 +48,7 @@ Oct 28 | [Pointers, arrays, structs, function calls](lectures/lecture17-public.p
 Oct 30 | Exam 2 review, codegen work day |  | [A4](assign/assign04.html) MS1 due<br>Fri 11/1
 Nov 4 | **Exam 2** |  | 
 Nov 6 | [Intro to code optimization, local value numbering, copy propagation](lectures/lecture18-public.pdf) | EaC 8.1–8.5 | 
-Nov 11 | <span class='tentative'>Global optimization/liveness analysis</span> | EaC 8.6 | 
+Nov 11 | [Global optimization/liveness analysis](lectures/lecture19-public.pdf) | EaC 8.6 | 
 Nov 13 | <span class='tentative'>Local register allocation</span> | EaC 13.1–13.3 | [A4](assign/assign04.html) MS2 due<br>Fri 11/15
 Nov 18 | [Peephole optimization](lectures/lecture21-public.pdf) | EaC 11.5 | 
 Nov 20 | <span class='tentative'>Dataflow analysis</span> | EaC 9.1–9.2, <a href='lectures/kildall-popl73.pdf'>Kildall-POPL73</a> | 
