@@ -49,7 +49,7 @@ Oct 30 | Exam 2 review, codegen work day |  | [A4](assign/assign04.html) MS1 due
 Nov 4 | **Exam 2** |  | 
 Nov 6 | [Intro to code optimization, local value numbering, copy propagation](lectures/lecture18-public.pdf) | EaC 8.1–8.5 | 
 Nov 11 | [Global optimization/liveness analysis](lectures/lecture19-public.pdf) | EaC 8.6 | 
-Nov 13 | <span class='tentative'>Local register allocation</span> | EaC 13.1–13.3 | [A4](assign/assign04.html) MS2 due<br>Fri 11/15
+Nov 13 | [Local register allocation](lectures/lecture20-public.pdf) | EaC 13.1–13.3 | [A4](assign/assign04.html) MS2 due<br>Fri 11/15
 Nov 18 | [Peephole optimization](lectures/lecture21-public.pdf) | EaC 11.5 | 
 Nov 20 | <span class='tentative'>Dataflow analysis</span> | EaC 9.1–9.2, <a href='lectures/kildall-popl73.pdf'>Kildall-POPL73</a> | 
 Nov 25–29 | **Fall recess (no classes)** |  | 
