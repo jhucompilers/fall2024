@@ -18,11 +18,11 @@ excellent option if you don't have a personal machine that can run x86-64 Linux.
 [Send me an email](mailto:daveho@cs.jhu.edu) if you need an account.
 
 Note that you can install Ubuntu 22.04 from the Microsoft Store on a Windows computer,
-and this is also can be the basis of an x86-64 Linux development environment.
+and this is also a good way to set up an x86-64 Linux development environment.
 
 We are not aware of any good way to set up a local development environment
-on an M1 Mac. The ugrad and grad machines are probably your best option if
-you have an M1 Mac.
+on an Apple Silicon Mac. The ugrad and grad machines are probably your best option in
+this case.
 
 Please see the instructors or CAs if you need help or advice on setting up a
 development environment.
