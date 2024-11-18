@@ -36,6 +36,10 @@ and/or Gradescope.
 
 ## News
 
+* **Nov 18** — Exam 3 will take place on Thursday, Dec 19th at 2 pm in
+  Shaffer 2 (our usual classroom.) As with Exams 1 and 2, you may bring one
+  sheet of *hand-written* notes. Review materials are available on the
+  [Resources](resources.html) page.
 * **Nov 6** — [Assignment 5](assign/assign05.html) is due Friday, Dec 6th by 11 pm.
   Note that late hours may *not* be used on this assignment, so please plan accordingly.
 * **Oct 26** — Exam 2 will take place in class on Monday, Nov 4th.
