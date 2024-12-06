@@ -54,5 +54,5 @@ Nov 18 | [Peephole optimization](lectures/lecture21-public.pdf) | EaC 11.5 |
 Nov 20 | Dataflow analysis: [slides](lectures/foster-dataflow.pdf), [slides](lectures/lecture22-public.pdf) | EaC 9.1–9.2, <a href='lectures/kildall-popl73.pdf'>Kildall-POPL73</a> | 
 Nov 25–29 | **Fall recess (no classes)** |  | 
 Dec 2 | Static single assignment (SSA) form: [slides](lectures/lecture23-public.pdf), [CMU SSA slides](http://www.cs.cmu.edu/afs/cs/academic/class/15745-s12/public/lectures/L13-SSA-Concepts-1up.pdf), [PDX global reg alloc slides](https://web.cecs.pdx.edu/~mperkows/temp/register-allocation.pdf) |  | 
-Dec 4 | Exam 3 review, work day |  | <span class='tentative'>A5 due<br>Fri 12/6</span>
+Dec 4 | Exam 3 review, work day |  | [A5](assign/assign05.html) due<br>Sat 12/7
 Dec 19 | **Exam 3**, 2pm, in Shaffer 2 |  | 

@@ -3,7 +3,7 @@ layout: default
 title: "Assignment 5"
 ---
 
-**Due date**: Friday, Dec 6th by 11pm
+**Due date**: Saturday, Dec 7th by 11pm
 
 *Note*: it will not be possible to use late hours on this assignment,
 so please plan accordingly

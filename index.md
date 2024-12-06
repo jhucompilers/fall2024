@@ -36,6 +36,9 @@ and/or Gradescope.
 
 ## News
 
+* **Dec 6** — To allow a little more time to finish, the due date for
+  [Assignment 5](assign/assign05.html) has been changed to Saturday,
+  Dec 7th at 11 pm.
 * **Nov 18** — Exam 3 will take place on Thursday, Dec 19th at 2 pm in
   Shaffer 2 (our usual classroom.) As with Exams 1 and 2, you may bring one
   sheet of *hand-written* notes. Review materials are available on the
